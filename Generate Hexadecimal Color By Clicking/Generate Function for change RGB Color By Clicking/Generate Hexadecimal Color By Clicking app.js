@@ -20,6 +20,7 @@ function main() {
     btn.addEventListener('click', function() {
         const bgColor = generateHexColor()
         root.style.backgroundColor = bgColor
+        output.value = bgColor
     })
 }
 //Step 2 - random color enerator function
@@ -30,7 +31,7 @@ function generateHexColor() {
     const two = Math.floor(Math.random() * 255)
     const three = Math.floor(Math.random() * 255)
     // console.log(one, two, three);
-    return `#(${one.toString(16)}${two.toString(16)}${three.toString(16)})`
+    return `#${one.toString(16)}${two.toString(16)}${three.toString(16)}`;
 
 }
 
