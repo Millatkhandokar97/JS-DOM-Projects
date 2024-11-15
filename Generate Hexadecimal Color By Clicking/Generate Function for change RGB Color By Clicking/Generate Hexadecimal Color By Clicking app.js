@@ -3,6 +3,8 @@
 /**
  * Project Requirements:
  * - Generate Function for change RGB Color By Clicking
+ * - Also display the hex code to a disabled input field
+ *
  */
 
 //Steps
