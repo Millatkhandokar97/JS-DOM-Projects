@@ -1,4 +1,4 @@
-//Generate Function for change RGB Color By Clicking
+//Generate Function for change RGB Color By Clicking in Javascript
 
 /**
  * Project Requirements:
