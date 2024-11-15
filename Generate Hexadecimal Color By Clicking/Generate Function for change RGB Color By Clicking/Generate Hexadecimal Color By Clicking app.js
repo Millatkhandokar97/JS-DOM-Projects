@@ -1,4 +1,4 @@
-//Generate Function for change Hexadecimal Color By Clicking
+//Generate Function for change Hexadecimal Color By Clicking in javascript
 
 /**
  * Project Requirements:
