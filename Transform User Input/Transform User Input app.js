@@ -62,7 +62,7 @@ function main() {
         const color = e.target.value
         if(color){
             output.value = color.toUpperCase()
-            if(color && isValidHex(color)){
+            if(color){
                 root.style.backgroundColor = `#${color}`
             }
         }
@@ -106,7 +106,7 @@ function isValidHex(color){
     if (color.length !== 6) return false
 
     color = color.substring(2)
-    return /^[0-9A-Fa-f]{6}/i.test(color)
+    return /^[0-9A-Fa-f]{6}/i.test(`#${color}`)
 }
 
 // Step 3 - collect all necessary references
