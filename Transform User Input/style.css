@@ -9,7 +9,7 @@
 
 }
 .container {
-    display: grid;
+
     align-content: space-evenly;
     margin: 0 auto;
     display: inline-block;
@@ -26,7 +26,6 @@
     text-align: center center;
     margin: 0 auto;
     padding: 50px;
-    justify-content: space-between;
 
     text-shadow:
         1px 1px 2px black;
@@ -56,10 +55,9 @@
     margin-bottom: 10px;
 
 }
-input[type="text"],
-input[type="text"]
+
 input[type="text"]{
-    padding: 5px;
+    padding: 5.1px;
     
 }
 
