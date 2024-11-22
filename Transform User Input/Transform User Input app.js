@@ -54,7 +54,7 @@ function main() {
         if (isValidHex(output.value)){
             generateToastMessage(`#${output.value} copied`)
         }else{
-            alert('Invalid Color Code')
+            generateToastMessage(`#${output.value} The hex code is wrong`)
         }
     })
     
@@ -105,7 +105,6 @@ function generateToastMessage(msg){
 function isValidHex(color){
     if (color.length !== 6) return false
 
-    color = color.substring(2)
     return /^[0-9A-Fa-f]{6}/i.test(`#${color}`)
 }
 
