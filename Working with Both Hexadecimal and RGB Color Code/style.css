@@ -97,6 +97,13 @@ input[type="text"]{
     padding: 5.1px;
 }
 
+h3{
+    color: #ffffff;
+    text-shadow:
+        1px 1px 2px black;
+    
+}
+
 .input-group button {
     width: 80px;
     padding: 5px;
