@@ -9,13 +9,15 @@
  * - Add a button to copy the color code
  * - Add a toast message when copied
  * - user can type their own hex code too
+ * - show rgb color too, but do not need to edit it
+ * - user cal also coppy the rgb color code
  */
 
 //Steps
 
 let div = null
 
-//Step 1 - create onload handler
+
 window.onload = () => {
     // console.log("page is fully loaded");
     main()
@@ -24,13 +26,17 @@ function main() {
     const root = document.getElementById('root')
     const changeBtn = document.getElementById('change-btn')
     const output = document.getElementById('output')
+    const output2 = document.getElementById('output2')
     const copyBtn = document.getElementById('copy-btn')
 
 
     changeBtn.addEventListener('click', function() {
-        const bgColor = generateHexColor()
-        root.style.backgroundColor = bgColor
-        output.value = bgColor.substring(1)
+        const color = generateColorDecimal()
+        const hex = generateHexColor(color)
+        const rgb = generateRGBColor(color)
+        root.style.backgroundColor = hex
+        output.value = hex.substring(1)
+        output2.value = rgb
     })
 
     // copyBtn.addEventListener('click', function(){
@@ -55,7 +61,7 @@ function main() {
         if (isValidHex(output.value)){
             generateToastMessage(`#${output.value} copied`)
         }else{
-            generateToastMessage(`#${output.value} The hex code is wrong`)
+            generateToastMessage(`#${output.value} The hex code copied`)
         }
     })
     
@@ -69,14 +75,42 @@ function main() {
         }
     })
 }
-//Step 2 - random color enerator function
-function generateHexColor() {
 
-    const one = Math.floor(Math.random() * 255)
-    const two = Math.floor(Math.random() * 255)
-    const three = Math.floor(Math.random() * 255)
-    return `#${one.toString(16)}${two.toString(16)}${three.toString(16)}`.toUpperCase();
+// function 1 - generate three random decimal number for red, green and blue
+// return as an object
 
+function generateColorDecimal(){
+    const red = Math.floor(Math.random() * 255)
+    const green = Math.floor(Math.random() * 255)
+    const blue = Math.floor(Math.random() * 255)
+
+    return {
+        red,
+        green,
+        blue,
+    }
+}
+
+// function 2 - generate hex color code
+
+function generateHexColor({red, green, blue}) {
+    //const {red, green, blue} = generateColorDecimal()
+    // const redValid = red.length <= 2 ? `0${red}` : red.toString(16)
+    // const greenValid = green.length <= 2 ? `0${green}` : green.toString(16)
+    //const blueValid = blue.length <= 2 ? `0${blue}` : blue.toString(16)
+
+    const getTwoColorCode = (value) =>{
+        const hex = value.toString(16)
+        return hex.length === 1 ? `0${hex}` : hex
+    }
+
+    return `#${getTwoColorCode(red)}${getTwoColorCode(green)}${getTwoColorCode(blue)}`.toUpperCase();
+}
+
+// function 3 - generate rgb a color code
+function generateRGBColor({red, green, blue}){
+    //const {red, green, blue} = generateColorDecimal()
+    return `rgb(${red}, ${green}, ${blue})`
 }
 
 function generateToastMessage(msg){
@@ -109,6 +143,10 @@ function isValidHex(color){
     return /^[0-9A-Fa-f]{6}/i.test(`#${color}`)
 }
 
+//Step 1 - create onload handler
+
+//Step 2 - random color enerator function
+
 // Step 3 - collect all necessary references
 
 //Step 4 - handle the click event
@@ -127,4 +165,6 @@ function isValidHex(color){
 
 //Step 11 - prevent copying hex code if it is not valid
 
-//Step 12 - 
+//Step 12 - refactor the color generator function
+
+//Step 13 -update color code to display rgb colors
