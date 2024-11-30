@@ -60,9 +60,9 @@ function main() {
             div = null
         }
         if (isValidHex(output2.value)){
-            generateToastMessage(`#${output2.value} copied`)
+            generateToastMessage(`${output2.value} copied`)
         }else{
-            generateToastMessage(`#${output2.value} The rgb code copied`)
+            generateToastMessage(`${output2.value} The rgb code copied`)
         }
     })
     
