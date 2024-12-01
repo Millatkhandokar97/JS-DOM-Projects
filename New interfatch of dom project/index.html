@@ -17,33 +17,53 @@
         </div>
         <div class="Color-functionality">
             <div class="button-section">
-                <p>Change & Copy Color</p>
-                <button>Copy To Clipboard</button>
+                <h3 class="section-title">Change & Copy Color</h3>
+                <button class="copy-button">Copy To Clipboard</button>
             </div>
-            <div class="select-aria">
-                <p>Select Copy Mode</p>
-                <input type="checkbox" name="checkbox" id="checkbox-hex">
-                <p>Hex</p>
-                <input type="checkbox" name="checkbox" id="checkbox-rgb">
-                <p>Rgb</p>
-            </div>
-            <div class="display-input">
-                <div class="hex">
-                    <p>Hex</p>
-                    <div class="intput-icon">#</div>
-                    <input class="output" type="text" value="000000" id="output">    
+            <div class="divider"></div>
+            <div class="select-copy-mode">
+                <p class="lead">Select Copy Mode</p>
+                <div class="mode-radio-group">
+                    <div class="mode-input-group">
+                        <input type="radio" name="color-mode" id="color-mode-hex"/>
+                        <label for="color-mode-hex">Hex</label>
+                    </div>
+                    <div class="mode-input-group">
+                        <input type="radio" name="color-mode" id="color-mode-rgb">
+                        <label for="color-mode-rgb">Rgb</label>  
+                    </div>
                 </div>
-                <div class="rgb">
-                    <p>Rgb</p>
-                    <input class="output2" type="text" value="rgb(00,00,00)" id="output2">    
+                
+            </div>
+            <div class="selected-color-code">
+                <div class="hex-input-group">
+                    <label for="input-hex" class="lead">Hex</label>
+                    <input class="output" type="text" value="#dddeee" placeholder="#dddeee" id="input-hex">
+                    <div class="hex-icon">#</div>  
+                </div>
+                <div class="input-rgb">
+                    <label for="input-rgb" class="lead">Rgb</label>
+                    <input class="output2" type="text" value="rgb(221, 222, 238)" placeholder="221, 222, 238" id="input-rgb">    
                 </div>
             </div>
-            <div class="adjust-color">
+            <div class="color-sliders">
                 <p>Adjust RGB Colors</p>
-                <div class="slider">
-                    <p>Red</p>
-                    <p>Green</p>
-                    <p>Blue</p>
+                <div class="color-sliders-group">
+                    <div class="slider-label-group">
+                        <p>Red</p>
+                        <p>222</p>
+                        <input class="color-slider-red" type="range" min="0" max="255" value="221" name="red" id="slider-range-red">
+                    </div>
+                    <div class="slider-label-group">
+                        <p>Green</p>
+                        <p>222</p>
+                        <input class="color-slider-green" type="range" min="0" max="255" value="222" name="green" id="slider-range-green">
+                    </div>
+                    <div class="slider-label-group">
+                        <p>Blue</p>
+                        <p>222</p>
+                        <input class="color-slider-blue" type="range" min="0" max="255" value="238" name="blue" id="slider-range-blue">
+                    </div>
                 </div>
             </div>
         </div>
