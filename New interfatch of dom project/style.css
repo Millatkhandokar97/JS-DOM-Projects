@@ -33,6 +33,10 @@ body {
     justify-content: space-between;
 }
 
+.random-color {
+    color: #d1860f;
+}
+
 .display-color {
     display: inline-block;
     border: none;
@@ -67,6 +71,16 @@ body {
     background-color: #dddeee;
 }
 
+
+.button-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.copy-button {
+    color: #d1860f;
+}
+
 .select-copy-mode {
     display: flex;
     align-items: center;
@@ -77,17 +91,17 @@ body {
 
 .mode-radio-group {
     display: flex;
-    gap: 1px;
+    gap: 15px;
 }
 
-.select-color-code {
+.selected-color-code {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     gap: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
-.color-slider {
+.color-sliders {
     margin-top: 20px;
 }
 
@@ -97,20 +111,27 @@ body {
 
 .hex-icon {
     position: absolute;
-    top: 47%;
+    top: 61%;
     left: 1px;
     background-color: #dddeee;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
+    border-top-left-radius: 2.5px;
+    border-bottom-left-radius: 2.5px;
+    font-size: 15px;
 }
 
-.input-hex {
-    padding-left: 55px;
+.output {
+    padding-left: 11px;
+    margin-top: 10px;
+}
+
+.output2 {
+    margin-top: 10px;
 }
 
 .color-sliders-group {
     margin-top: 8px;
     display: flex;
+    justify-content: space-between;
     
 }
 
@@ -125,12 +146,17 @@ body {
 
 .slider-label-group {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
+    gap: 25px;
     font-size: 14px;
     color: #555555;
     margin-top: 15px;
+    flex-direction: column;
+    column-gap: 70px;
+}
+
+.slider-text {
+    display: flex;
+    justify-content: space-between;
 }
 
 .text-input,
@@ -154,6 +180,7 @@ body {
     color: #333333;
     display: block;
     user-select: none;
+
 }
 
 .toast-message {
