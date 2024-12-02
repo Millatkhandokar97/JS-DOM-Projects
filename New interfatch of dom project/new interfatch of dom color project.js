@@ -6,15 +6,16 @@
  * Descrption: Color picker application with huge dom functionalities
  * */
 
-//Steps
-
+// Globals
 let div = null
 
-
+//onload handler
 window.onload = () => {
     // console.log("page is fully loaded");
     main()
   };
+
+// main or boot function, ths function will take care of getting all of the Dom references
 function main() {
     const root = document.getElementById('root')
     const changeBtn = document.getElementById('change-btn')
@@ -72,8 +73,16 @@ function main() {
     })
 }
 
-// function 1 - generate three random decimal number for red, green and blue
-// return as an object
+// even handlers
+
+// DOM function
+
+// Utils
+
+/**
+ * generate and return an object of three color decimal values
+ * @returns {object}
+ */
 
 function generateColorDecimal(){
     const red = Math.floor(Math.random() * 255)
