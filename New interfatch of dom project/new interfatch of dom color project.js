@@ -1,10 +1,9 @@
-//new interfatch of dom color project in javascript
 
 /**
  * Date: 2-12-2024
  * Author: MD.Millat Khandokar
  * Descrption: Color picker application with huge dom functionalities
- * */
+ */
 
 // Globals
 let div = null
@@ -76,6 +75,26 @@ function main() {
 // even handlers
 
 // DOM function
+function generateToastMessage(msg){
+    div = document.createElement('div')
+    div.innerText = msg;
+    div.className = 'toast-message toast-message-slide-in';
+    
+    div.addEventListener('click', function(){
+        div.classList.remove('toast-message-slide-in')
+        div.classList.add('toast-message-slide-out')
+        
+        div.addEventListener('animationend', function(){
+            div.remove()
+            div = null
+        })
+    })
+    document.body.appendChild(div)
+}
+
+function updateColorCodeToDom (){
+
+}
 
 // Utils
 
@@ -96,13 +115,13 @@ function generateColorDecimal(){
     }
 }
 
-// function 2 - generate hex color code
+/**
+ * take a color of three decimal values and return a hexadecimal color code
+ * @param {object} color 
+ * @returns {string}
+ */
 
 function generateHexColor({red, green, blue}) {
-    //const {red, green, blue} = generateColorDecimal()
-    // const redValid = red.length <= 2 ? `0${red}` : red.toString(16)
-    // const greenValid = green.length <= 2 ? `0${green}` : green.toString(16)
-    //const blueValid = blue.length <= 2 ? `0${blue}` : blue.toString(16)
 
     const getTwoColorCode = (value) =>{
         const hex = value.toString(16)
@@ -112,7 +131,12 @@ function generateHexColor({red, green, blue}) {
     return `#${getTwoColorCode(red)}${getTwoColorCode(green)}${getTwoColorCode(blue)}`.toUpperCase();
 }
 
-// function 3 - generate rgb a color code
+
+/**
+ * take a color of three decimal values and return a rgb color code 
+ * @param {object} color 
+ * @returns {string}
+ */
 function generateRGBColor({red, green, blue}){
     //const {red, green, blue} = generateColorDecimal()
     return `rgb(${red}, ${green}, ${blue})`
@@ -130,31 +154,13 @@ function hexToRgb(hex){
     return `rgb(${red}, ${green}, ${blue})`
 }
 
-console.log(hexToRgb('ffffff')
-);
-
-function generateToastMessage(msg){
-    div = document.createElement('div')
-    div.innerText = msg;
-    div.className = 'toast-message toast-message-slide-in';
-    
-    div.addEventListener('click', function(){
-        div.classList.remove('toast-message-slide-in')
-        div.classList.add('toast-message-slide-out')
-        
-        div.addEventListener('animationend', function(){
-            div.remove()
-            div = null
-        })
-    })
 
 
-    document.body.appendChild(div)
-}
 
 /**
- * 
- * @param {string} color 
+ * validate hex color code
+ * @param {string} color
+ * @returns {boolean} 
  */
 
 function isValidHex(color){
