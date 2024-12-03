@@ -167,7 +167,3 @@ function isValidHex(color){
 
     return /^[0-9A-Fa-f]{6}/i.test(`#${color}`)
 }
-
-
-
-
