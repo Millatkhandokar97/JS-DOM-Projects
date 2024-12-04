@@ -91,8 +91,26 @@ function generateToastMessage(msg){
     document.body.appendChild(div)
 }
 
+/**
+ * update dom elements with calculated color values
+ * @param {object} color
+ */
 function updateColorCodeToDom (){
+    const colorDisplay = document.getElementById('color-display')
+    const colorModeHex = document.getElementById('color-mode-hex')
+    const colorModeRgb = document.getElementById('color-mode-rgb')
+    const colorSliderRed = document.getElementById('color-slider-red')
+    const colorSliderRedLabel = document.getElementById('color-slider-red-label')
+    const colorSliderGreen = document.getElementById('color-slider-green')
+    const colorSliderGreenLabel = document.getElementById('color-slider-green-label')
+    const colorSliderBlue = document.getElementById('color-slider-blue')
+    const colorSliderBlueLabel = document.getElementById('color-slider-blue-label')
 
+    const hexColor = `#${generateHexColor(color)}`
+    const rgbColor = generateRGBColor(color)
+    
+    colorDisplay.innerText = hexColor
+    colorModeHex.value = hexColor
 }
 
 // Utils
@@ -142,18 +160,21 @@ function generateRGBColor({red, green, blue}){
 }
 
 /**
- * convert hex color to rgb
+ * convert hex color to decimal colors
  * @param {string} hex 
+ * @returns {object}
  */
-function hexToRgb(hex){
+function hexToDecimalColors(hex){
     const red = parseInt(hex.slice(0, 2), 16)
     const green = parseInt(hex.slice(2, 4), 16)
     const blue = parseInt(hex.slice(4), 16)
 
-    return `rgb(${red}, ${green}, ${blue})`
+    return {
+        red,
+        green,
+        blue,
+    }
 }
-
-
 
 
 /**
