@@ -15,7 +15,7 @@ window.onload = () => {
 
 // main or boot function, ths function will take care of getting all of the Dom references
 function main() {
-    const generateRandomColorBtn = document.getElementById('generate-random-color')
+    const generateRandomColorBtn = document.getElementById('generate-random-color');
     // const root = document.getElementById('root')
     // const changeBtn = document.getElementById('change-btn')
     // const output = document.getElementById('output')
@@ -132,7 +132,7 @@ function generateColorDecimal(){
     return {
         red,
         green,
-        blue,
+        blue
     }
 }
 
