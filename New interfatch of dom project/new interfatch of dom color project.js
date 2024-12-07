@@ -23,7 +23,7 @@ function main() {
     // const copyBtn = document.getElementById('copy-btn')
     // const copyBtn2 = document.getElementById('copy-btn2')
 
-    generateRandomColorBtn('click', function(){
+    generateRandomColorBtn.addEventListener('click', function(){
         const color = generateColorDecimal()
         updateColorCodeToDom(color)
     })
