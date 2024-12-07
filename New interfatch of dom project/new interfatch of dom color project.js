@@ -16,67 +16,28 @@ window.onload = () => {
 // main or boot function, ths function will take care of getting all of the Dom references
 function main() {
     const generateRandomColorBtn = document.getElementById('generate-random-color');
-    // const root = document.getElementById('root')
-    // const changeBtn = document.getElementById('change-btn')
-    // const output = document.getElementById('output')
-    // const output2 = document.getElementById('output2')
-    // const copyBtn = document.getElementById('copy-btn')
-    // const copyBtn2 = document.getElementById('copy-btn2')
+    const colorModeHexInp = document.getElementById('input-hex')
 
-    generateRandomColorBtn.addEventListener('click', function(){
-        const color = generateColorDecimal()
-        updateColorCodeToDom(color)
+    generateRandomColorBtn.addEventListener('click', handleGenerateRandomColorBtn)
+
+    colorModeHexInp.addEventListener('keyup', function (e){
+        const hexColor = e.target.value
+        if(hexColor){
+            this.value = hexColor.toUpperCase()
+            if(isValidHex(hexColor)){
+                const color = hexToDecimalColors(hexColor)
+                updateColorCodeToDom(color)
+            }
+        }
     })
-
-    // changeBtn.addEventListener('click', function() {
-    //     const color = generateColorDecimal();
-    //     const hex = generateHexColor(color);
-    //     const rgb = generateRGBColor(color);
-    //     root.style.backgroundColor = hex;
-    //     output.value = hex.substring(1);
-    //     output2.value = rgb;
-    // })
-
-
-
-    // copyBtn.addEventListener('click', function(){
-    //     navigator.clipboard.writeText(`#${output.value}`)
-    //     if(div !== null){
-    //         div.remove()
-    //         div = null
-    //     }
-    //     if (isValidHex(output.value)){
-    //         generateToastMessage(`#${output.value} copied`)
-    //     }else{
-    //         generateToastMessage(`#${output.value} The hex code copied`)
-    //     }
-    // })
-    // copyBtn2.addEventListener('click', function(){
-    //     navigator.clipboard.writeText(`#${output2.value}`)
-    //     if(div !== null){
-    //         div.remove()
-    //         div = null
-    //     }
-    //     if (isValidHex(output2.value)){
-    //         generateToastMessage(`${output2.value} copied`)
-    //     }else{
-    //         generateToastMessage(`${output2.value} The rgb code copied`)
-    //     }
-    // })
     
-    // output.addEventListener('keyup', function(e){
-    //     const color = e.target.value
-    //     if(color){
-    //         output.value = color.toUpperCase()
-    //         if(color){
-    //             root.style.backgroundColor = `#${color}`
-    //             output2.value = hexToRgb(color)
-    //         }
-    //     }
-    // })
 }
 
 // even handlers
+function handleGenerateRandomColorBtn(){
+    const color = generateColorDecimal()
+    updateColorCodeToDom(color)
+}
 
 // DOM function
 function generateToastMessage(msg){
@@ -104,9 +65,9 @@ function updateColorCodeToDom (color){
     const hexColor = generateHexColor(color)
     const rgbColor = generateRGBColor(color)
 
-    document.getElementById('color-display').style.backgroundColor = hexColor
-    document.getElementById('color-mode-hex').value = hexColor
-    document.getElementById('color-mode-rgb').value = rgbColor
+    document.getElementById('color-display').style.backgroundColor = hexColor//`#${hexColor}`handleColorModeHexInp
+    document.getElementById('input-hex').value = hexColor
+    document.getElementById('input-rgb').value = rgbColor
     document.getElementById('color-slider-red').value = color.red
     document.getElementById('color-slider-red-label').innerText = color.red
     document.getElementById('color-slider-green').value = color.green
@@ -192,3 +153,36 @@ function isValidHex(color){
 
     return /^[0-9A-Fa-f]{6}/i.test(`#${color}`)
 }
+// changeBtn.addEventListener('click', function() {
+    //     const color = generateColorDecimal();
+    //     const hex = generateHexColor(color);
+    //     const rgb = generateRGBColor(color);
+    //     root.style.backgroundColor = hex;
+    //     output.value = hex.substring(1);
+    //     output2.value = rgb;
+    // })
+
+    // copyBtn.addEventListener('click', function(){
+    //     navigator.clipboard.writeText(`#${output.value}`)
+    //     if(div !== null){
+    //         div.remove()
+    //         div = null
+    //     }
+    //     if (isValidHex(output.value)){
+    //         generateToastMessage(`#${output.value} copied`)
+    //     }else{
+    //         generateToastMessage(`#${output.value} The hex code copied`)
+    //     }
+    // })
+    // copyBtn2.addEventListener('click', function(){
+    //     navigator.clipboard.writeText(`#${output2.value}`)
+    //     if(div !== null){
+    //         div.remove()
+    //         div = null
+    //     }
+    //     if (isValidHex(output2.value)){
+    //         generateToastMessage(`${output2.value} copied`)
+    //     }else{
+    //         generateToastMessage(`${output2.value} The rgb code copied`)
+    //     }
+    // })
