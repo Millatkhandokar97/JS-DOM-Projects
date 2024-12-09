@@ -68,7 +68,7 @@ function updateColorCodeToDom (color){
     const hexColor = generateHexColor(color)
     const rgbColor = generateRGBColor(color)
 
-    document.getElementById('color-display').style.backgroundColor = hexColor//`#${hexColor}`handleColorModeHexInp
+    document.getElementById('color-display').style.backgroundColor = `#${hexColor}`//handleColorModeHexInp
     document.getElementById('input-hex').value = hexColor
     document.getElementById('input-rgb').value = rgbColor
     document.getElementById('color-slider-red').value = color.red
@@ -113,7 +113,7 @@ function generateHexColor({red, green, blue}) {
         return hex.length === 1 ? `0${hex}` : hex
     }
 
-    return `#${getTwoColorCode(red)}${getTwoColorCode(green)}${getTwoColorCode(blue)}`.toUpperCase();
+    return `${getTwoColorCode(red)}${getTwoColorCode(green)}${getTwoColorCode(blue)}`.toUpperCase();
 }
 
 
