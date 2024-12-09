@@ -4,6 +4,7 @@
  * Descrption: Color picker application with huge dom functionalities
  */
 
+
 // Globals
 let div = null
 
@@ -12,6 +13,8 @@ window.onload = () => {
     // console.log("page is fully loaded");
     main()
   };
+
+
 
 // main or boot function, ths function will take care of getting all of the Dom references
 function main() {
