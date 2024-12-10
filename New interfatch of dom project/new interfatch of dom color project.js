@@ -24,7 +24,8 @@ function main() {
     generateRandomColorBtn.addEventListener('click', handleGenerateRandomColorBtn)
 
     colorModeHexInp.addEventListener('keyup', function (e){
-        const hexColor = e.target.value
+        console.log('key up is working');
+        const hexColor = e.target.value;
         if(hexColor){
             this.value = hexColor.toUpperCase()
             if(isValidHex(hexColor)){
