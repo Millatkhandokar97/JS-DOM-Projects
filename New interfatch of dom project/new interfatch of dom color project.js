@@ -18,22 +18,21 @@ window.onload = () => {
 
 // main or boot function, ths function will take care of getting all of the Dom references
 function main() {
+    // dom references
     const generateRandomColorBtn = document.getElementById('generate-random-color');
     const colorModeHexInp = document.getElementById('input-hex')
+    const colorSliderRed = document.getElementById('color-slider-red')
+    const colorSliderGreen = document.getElementById('color-slider-green')
+    const colorSliderBlue = document.getElementById('color-slider-blue')
 
+    // event listeners
     generateRandomColorBtn.addEventListener('click', handleGenerateRandomColorBtn)
 
-    colorModeHexInp.addEventListener('keyup', function (e){
-        console.log('key up is working');
-        const hexColor = e.target.value;
-        if(hexColor){
-            this.value = hexColor.toUpperCase()
-            if(isValidHex(hexColor)){
-                const color = hexToDecimalColors(hexColor)
-                updateColorCodeToDom(color)
-            }
-        }
-    })
+    colorModeHexInp.addEventListener('keyup', handleColorModeHexInp)
+
+    colorSliderRed.addEventListener('change', handleColorSliders(colorSliderRed, colorSliderGreen, colorSliderBlue))
+    colorSliderGreen.addEventListener('change', handleColorSliders(colorSliderRed, colorSliderGreen, colorSliderBlue))
+    colorSliderBlue.addEventListener('change', handleColorSliders(colorSliderRed, colorSliderGreen, colorSliderBlue))
     
 }
 
@@ -43,23 +42,47 @@ function handleGenerateRandomColorBtn(){
     updateColorCodeToDom(color)
 }
 
-// DOM function
-function generateToastMessage(msg){
-    div = document.createElement('div')
-    div.innerText = msg;
-    div.className = 'toast-message toast-message-slide-in';
-    
-    div.addEventListener('click', function(){
-        div.classList.remove('toast-message-slide-in')
-        div.classList.add('toast-message-slide-out')
-        
-        div.addEventListener('animationend', function(){
-            div.remove()
-            div = null
-        })
-    })
-    document.body.appendChild(div)
+function handleColorModeHexInp(e){
+    const hexColor = e.target.value;
+    if(hexColor){
+        this.value = hexColor.toUpperCase()
+        if(isValidHex(hexColor)){
+            const color = hexToDecimalColors(hexColor)
+            updateColorCodeToDom(color)
+        }
+    }
 }
+
+function handleColorSliders(colorSliderRed, colorSliderGreen, colorSliderBlue){
+    return function(){
+        const color = {
+            red: parseInt(colorSliderRed.value),
+            green: parseInt(colorSliderGreen.value),
+            blue: parseInt(colorSliderBlue.value)
+        }
+    
+        updateColorCodeToDom(color)
+    }
+}
+
+// DOM function
+
+// function generateToastMessage(msg){
+//     div = document.createElement('div')
+//     div.innerText = msg;
+//     div.className = 'toast-message toast-message-slide-in';
+    
+//     div.addEventListener('click', function(){
+//         div.classList.remove('toast-message-slide-in')
+//         div.classList.add('toast-message-slide-out')
+        
+//         div.addEventListener('animationend', function(){
+//             div.remove()
+//             div = null
+//         })
+//     })
+//     document.body.appendChild(div)
+// }
 
 /**
  * update dom elements with calculated color values
@@ -69,7 +92,7 @@ function updateColorCodeToDom (color){
     const hexColor = generateHexColor(color)
     const rgbColor = generateRGBColor(color)
 
-    document.getElementById('color-display').style.backgroundColor = `#${hexColor}`//handleColorModeHexInp
+    document.getElementById('color-display').style.backgroundColor = `#${hexColor}`
     document.getElementById('input-hex').value = hexColor
     document.getElementById('input-rgb').value = rgbColor
     document.getElementById('color-slider-red').value = color.red
