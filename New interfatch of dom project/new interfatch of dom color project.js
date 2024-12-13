@@ -24,6 +24,8 @@ function main() {
     const colorSliderRed = document.getElementById('color-slider-red')
     const colorSliderGreen = document.getElementById('color-slider-green')
     const colorSliderBlue = document.getElementById('color-slider-blue')
+    const colorModeRadio = document.getElementsByName('color-mode')
+    console.log(getCheckedValueFromRadios(colorModeRadio));
 
     // event listeners
     generateRandomColorBtn.addEventListener('click', handleGenerateRandomColorBtn)
@@ -66,6 +68,26 @@ function handleColorSliders(colorSliderRed, colorSliderGreen, colorSliderBlue){
 }
 
 // DOM function
+/**
+ * Generate a dynamic DOM element to show a toast message
+ * @param {string} msg
+ */
+
+/**
+ * 
+ * @param {Array} nodes
+ * @returns {string | null}
+ */
+function getCheckedValueFromRadios(nodes) {
+    let checkedValue = null
+    for (let i = 0; i < nodes.length; i++){
+        if(nodes[i].checked){
+            checkedValue = nodes[i].value;
+            break;
+        }
+    }
+    return checkedValue;
+}
 
 // function generateToastMessage(msg){
 //     div = document.createElement('div')
