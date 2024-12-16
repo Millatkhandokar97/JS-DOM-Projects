@@ -119,8 +119,6 @@ function getCheckedValueFromRadios(nodes) {
     return checkedValue;
 }
 
-
-
 function generateToastMessage(msg){
     toastContainer = document.createElement('toastContainer')
     toastContainer.innerText = msg;
@@ -156,7 +154,6 @@ function updateColorCodeToDom (color){
     document.getElementById('color-slider-blue').value = color.blue
     document.getElementById('color-slider-blue-label').innerText = color.blue
 
-    
 }
 
 // Utils
