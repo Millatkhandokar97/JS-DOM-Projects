@@ -5,8 +5,6 @@
  */
 
 
-
-
 // Globals
 let toastContainer = null
 
@@ -278,16 +276,16 @@ function isValidHex(color){
 
 
 
-function App() {
-  const items = ['apple', 'banana', 'cherry'];
-  return (
-    <ul>
-      {items.map(item => (
-        <li>{item}</li>
-      ))}
-    </ul>
-  );
-}
+// function App() {
+//   const items = ['apple', 'banana', 'cherry'];
+//   return (
+//     <ul>
+//       {items.map(item => (
+//         <li>{item}</li>
+//       ))}
+//     </ul>
+//   );
+// }
 
 
 // function App() {
