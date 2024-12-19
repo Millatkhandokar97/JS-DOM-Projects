@@ -7,11 +7,16 @@
 
 // Globals
 let toastContainer = null
+const defaultColor = {
+    red: 221,
+    green: 222,
+    blue: 238,
+}
 
 //onload handler
 window.onload = () => {
-    // console.log("page is fully loaded");
     main()
+    updateColorCodeToDom(defaultColor)
   };
 
 
@@ -88,6 +93,7 @@ function handleCopyToClipboard(){
         const rgbColor = document.getElementById('input-rgb').value
         if(rgbColor){
         navigator.clipboard.writeText(rgbColor)
+        generateToastMessage(`${rgbColor} Copied`)
         } else{
             alert('Invalid RGB Color')
         }
@@ -228,44 +234,10 @@ function hexToDecimalColors(hex){
  */
 
 function isValidHex(color){
-    if (color.length !== 6) return false
+    if(color.length !== 6) return false
 
-    return /^[0-9A-Fa-f]{6}/i.test(`#${color}`)
+    return /^[0-9A-Fa-f]{6}/i.test(color)
 }
-// changeBtn.addEventListener('click', function() {
-    //     const color = generateColorDecimal();
-    //     const hex = generateHexColor(color);
-    //     const rgb = generateRGBColor(color);
-    //     root.style.backgroundColor = hex;
-    //     output.value = hex.substring(1);
-    //     output2.value = rgb;
-    // })
-
-    // copyBtn.addEventListener('click', function(){
-    //     navigator.clipboard.writeText(`#${output.value}`)
-    //     if(div !== null){
-    //         div.remove()
-    //         div = null
-    //     }
-    //     if (isValidHex(output.value)){
-    //         generateToastMessage(`#${output.value} copied`)
-    //     }else{
-    //         generateToastMessage(`#${output.value} The hex code copied`)
-    //     }
-    // })
-    // copyBtn2.addEventListener('click', function(){
-    //     navigator.clipboard.writeText(`#${output2.value}`)
-    //     if(div !== null){
-    //         div.remove()
-    //         div = null
-    //     }
-    //     if (isValidHex(output2.value)){
-    //         generateToastMessage(`${output2.value} copied`)
-    //     }else{
-    //         generateToastMessage(`${output2.value} The rgb code copied`)
-    //     }
-    // })
-
 
 
 
