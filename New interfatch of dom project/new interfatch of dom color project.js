@@ -25,7 +25,6 @@ function main() {
     const colorSliderGreen = document.getElementById('color-slider-green')
     const colorSliderBlue = document.getElementById('color-slider-blue')
     const copyToClipboard = document.getElementById('copy-to-clipboard')
-    const colorModeRadio = document.getElementsByName('color-mode')
 
     // event listeners
     generateRandomColorBtn.addEventListener('click', handleGenerateRandomColorBtn)
@@ -35,39 +34,8 @@ function main() {
     colorSliderRed.addEventListener('change', handleColorSliders(colorSliderRed, colorSliderGreen, colorSliderBlue))
     colorSliderGreen.addEventListener('change', handleColorSliders(colorSliderRed, colorSliderGreen, colorSliderBlue))
     colorSliderBlue.addEventListener('change', handleColorSliders(colorSliderRed, colorSliderGreen, colorSliderBlue))
-    copyToClipboard.addEventListener('click', function(){
-        const mode = getCheckedValueFromRadios(colorModeRadio)
-        if(mode === null){
-            throw new Error('Invalid Radio Input')
-        }
-
-        if(mode === 'hex'){
-            const hexColor = document.getElementById('input-hex').value
-            console.log('HexColor', hexColor);
-            navigator.clipboard.writeText(`#${hexColor}`)
-        } else {
-            const rgbColor = document.getElementById('input-rgb').value
-            navigator.clipboard.writeText(rgbColor)
-
-        }
-
-    })
-
+    copyToClipboard.addEventListener('click', handleCopyToClipboard)
 }
-
-    // copyBtn.addEventListener('click', function(){
-    //     navigator.clipboard.writeText(`#${output.value}`)
-    //     if(div !== null){
-    //         div.remove()
-    //         div = null
-    //     }
-    //     if (isValidHex(output.value)){
-    //         generateToastMessage(`#${output.value} copied`)
-    //     }else{
-    //         generateToastMessage(`#${output.value} The hex code copied`)
-    //     }
-    // })
-
 // even handlers
 function handleGenerateRandomColorBtn(){
     const color = generateColorDecimal()
@@ -96,6 +64,39 @@ function handleColorSliders(colorSliderRed, colorSliderGreen, colorSliderBlue){
         updateColorCodeToDom(color)
     }
 }
+
+function handleCopyToClipboard(){
+    const colorModeRadio = document.getElementsByName('color-mode')
+    const mode = getCheckedValueFromRadios(colorModeRadio)
+    if(mode === null){
+        throw new Error('Invalid Radio Input')
+    }
+    if(toastContainer !== null){
+        toastContainer.remove()
+        toastContainer = null
+    }
+
+    if(mode === 'hex'){
+        const hexColor = document.getElementById('input-hex').value
+        if(hexColor && isValidHex(hexColor)){
+            navigator.clipboard.writeText(`#${hexColor}`)
+            generateToastMessage(`#${hexColor} Copied`)
+        } else{
+            alert('Invalid Hex Code')
+        }
+    } else {
+        const rgbColor = document.getElementById('input-rgb').value
+        if(rgbColor){
+        navigator.clipboard.writeText(rgbColor)
+        } else{
+            alert('Invalid RGB Color')
+        }
+    }
+
+}
+
+
+
 
 // DOM function
 /**
