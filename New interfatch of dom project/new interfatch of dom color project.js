@@ -32,10 +32,14 @@ const defaultPresetColors = [
     '#4C8540',
     '#99BF37',
     '#DFDF8E',
+    '#FCFF98',
+    '#E3FF25',
     '#F3E74A',
+    '#FCD713',
     '#FCB013',
 
 ]
+const copySound = new Audio('./copy-paste.mp3')
 
 //onload handler
 window.onload = () => {
@@ -56,6 +60,7 @@ function main() {
     const colorSliderGreen = document.getElementById('color-slider-green')
     const colorSliderBlue = document.getElementById('color-slider-blue')
     const copyToClipboard = document.getElementById('copy-to-clipboard')
+    const presetColorParent = document.getElementById('preset-colors')
 
     // event listeners
     generateRandomColorBtn.addEventListener('click', handleGenerateRandomColorBtn)
@@ -66,6 +71,7 @@ function main() {
     colorSliderGreen.addEventListener('change', handleColorSliders(colorSliderRed, colorSliderGreen, colorSliderBlue))
     colorSliderBlue.addEventListener('change', handleColorSliders(colorSliderRed, colorSliderGreen, colorSliderBlue))
     copyToClipboard.addEventListener('click', handleCopyToClipboard)
+    presetColorParent.addEventListener('click', handlePresetColorParent)
 }
 // even handlers
 function handleGenerateRandomColorBtn(){
@@ -125,6 +131,15 @@ function handleCopyToClipboard(){
         }
     }
 
+}
+
+function handlePresetColorParent(event){
+    const child = event.target
+    if(child.className === 'color-box'){
+        navigator.clipboard.writeText(child.getAttribute('data-color'))
+        copySound.volume = 0.2
+        copySound.play() 
+    }
 }
 
 

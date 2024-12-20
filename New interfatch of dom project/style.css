@@ -191,13 +191,13 @@ label {
 .preset-colors{
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 15px;
     justify-content: flex-start;
     padding: 8px;
 }
 
 .color-box{
-    width: 60px;
+    width: 70px;
     height: 30px;
     border-radius: 0.15rem;
     cursor: pointer;
