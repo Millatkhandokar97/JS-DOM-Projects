@@ -15,21 +15,25 @@ const defaultColor = {
 const defaultPresetColors = [
     '#ffcdd2',
     '#f8bbd0',
-    '#e1bee7',
+    '#F89DD0',
+    '#FF93AB',
     '#ff8a80',
-    '#ff80ab',
     '#EA4754',
     '#DF0000',
-    '#7E89B3',
+    '#00FFFF',
+    '#00D1FF',
+    '#00ACFF',
+    '#007FE5',
     '#5861F8',
     '#0A32A9',
-    '#094264',
+    '#00006D',
+    '#4BFA77',
+    '#4BDD77',
     '#4C8540',
     '#99BF37',
-    '#4BDD77',
-    '#FCB013',
     '#DFDF8E',
-    '#F3E74A'
+    '#F3E74A',
+    '#FCB013',
 
 ]
 
@@ -37,6 +41,8 @@ const defaultPresetColors = [
 window.onload = () => {
     main()
     updateColorCodeToDom(defaultColor)
+    //display preset colors
+    displayColorBoxes(document.getElementById('preset-colors'), defaultPresetColors)
   };
 
 
@@ -181,6 +187,32 @@ function updateColorCodeToDom (color){
     document.getElementById('color-slider-blue').value = color.blue
     document.getElementById('color-slider-blue-label').innerText = color.blue
 
+}
+
+/**
+ * create a div element with class name color-box
+ * @param {string} color
+ * @returns {object}
+ */
+function generateColorBox(color) {
+    const div = document.createElement('div')
+    div.className = 'color-box'
+    div.style.backgroundColor = color
+    div.setAttribute('data-color', color)
+
+    return div
+}
+
+/**
+ * 
+ * @param {object} parent 
+ * @param {Array} colors 
+ */
+function displayColorBoxes(parent, colors){
+    colors.forEach((color) =>{
+        const colorBox = generateColorBox(color)
+        parent.appendChild(colorBox)
+    })
 }
 
 // Utils
