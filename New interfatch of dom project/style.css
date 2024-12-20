@@ -187,6 +187,28 @@ label {
     user-select: none; 
 }
 
+/* color boxes*/
+.preset-colors{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-start;
+    padding: 8px;
+}
+
+.color-box{
+    width: 60px;
+    height: 30px;
+    border-radius: 0.15rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.color-box:hover{
+    opacity: 0.9;
+    box-shadow: 0px 1px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
 .toast-message {
     position: fixed;
     z-index: 999;

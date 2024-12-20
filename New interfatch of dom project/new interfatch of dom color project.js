@@ -12,6 +12,26 @@ const defaultColor = {
     green: 222,
     blue: 238,
 }
+const defaultPresetColors = [
+    '#ffcdd2',
+    '#f8bbd0',
+    '#e1bee7',
+    '#ff8a80',
+    '#ff80ab',
+    '#EA4754',
+    '#DF0000',
+    '#7E89B3',
+    '#5861F8',
+    '#0A32A9',
+    '#094264',
+    '#4C8540',
+    '#99BF37',
+    '#4BDD77',
+    '#FCB013',
+    '#DFDF8E',
+    '#F3E74A'
+
+]
 
 //onload handler
 window.onload = () => {
