@@ -39,6 +39,7 @@ const defaultPresetColors = [
     '#FCB013',
 
 ]
+const customColors = []
 const copySound = new Audio('./copy-paste.mp3')
 
 //onload handler
@@ -60,7 +61,9 @@ function main() {
     const colorSliderGreen = document.getElementById('color-slider-green')
     const colorSliderBlue = document.getElementById('color-slider-blue')
     const copyToClipboard = document.getElementById('copy-to-clipboard')
+    const saveToCustom = document.getElementById('save-to-custom')
     const presetColorParent = document.getElementById('preset-colors')
+    const customColorParent = document.getElementById('custom-colors')
 
     // event listeners
     generateRandomColorBtn.addEventListener('click', handleGenerateRandomColorBtn)
@@ -72,6 +75,10 @@ function main() {
     colorSliderBlue.addEventListener('change', handleColorSliders(colorSliderRed, colorSliderGreen, colorSliderBlue))
     copyToClipboard.addEventListener('click', handleCopyToClipboard)
     presetColorParent.addEventListener('click', handlePresetColorParent)
+    saveToCustom.addEventListener('click', function(){
+        customColors.push(`#${colorModeHexInp.value}`)
+        displayColorBoxes(customColorParent, customColors)
+    })
 }
 // even handlers
 function handleGenerateRandomColorBtn(){

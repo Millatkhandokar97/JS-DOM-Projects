@@ -51,8 +51,9 @@ body {
 
 .section-title {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 300;
     color: #333333;
+    margin-top: 20px;
 }
 
 .color-display {
@@ -79,6 +80,16 @@ body {
 
 .copy-button {
     color: #d1860f;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+.save-button {
+    color: #d1860f;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
 }
 
 .select-copy-mode {
