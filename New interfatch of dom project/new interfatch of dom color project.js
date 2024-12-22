@@ -63,6 +63,7 @@ function main() {
     const copyToClipboard = document.getElementById('copy-to-clipboard')
     const saveToCustom = document.getElementById('save-to-custom')
     const presetColorParent = document.getElementById('preset-colors')
+    const customColorParent = document.getElementById('custom-colors')
 
     // event listeners
     generateRandomColorBtn.addEventListener('click', handleGenerateRandomColorBtn)
@@ -146,10 +147,11 @@ function handlePresetColorParent(event){
 }
 
 function handleSaveToCustomBtn(){
-    const customColorParent = document.getElementById('custom-colors')
-    customColors.push(`#${document.getElementById('input-hex').value}`)
+    return function(customColorParent, inputHex){
+    customColors.push(`#${input-hex.value}`)
     removeChildren(customColorParent)
     displayColorBoxes(customColorParent, customColors)
+    }
 }
 
 
