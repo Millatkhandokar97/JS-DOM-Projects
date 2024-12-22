@@ -63,7 +63,6 @@ function main() {
     const copyToClipboard = document.getElementById('copy-to-clipboard')
     const saveToCustom = document.getElementById('save-to-custom')
     const presetColorParent = document.getElementById('preset-colors')
-    const customColorParent = document.getElementById('custom-colors')
 
     // event listeners
     generateRandomColorBtn.addEventListener('click', handleGenerateRandomColorBtn)
@@ -75,10 +74,7 @@ function main() {
     colorSliderBlue.addEventListener('change', handleColorSliders(colorSliderRed, colorSliderGreen, colorSliderBlue))
     copyToClipboard.addEventListener('click', handleCopyToClipboard)
     presetColorParent.addEventListener('click', handlePresetColorParent)
-    saveToCustom.addEventListener('click', function(){
-        customColors.push(`#${colorModeHexInp.value}`)
-        displayColorBoxes(customColorParent, customColors)
-    })
+    saveToCustom.addEventListener('click', handleSaveToCustomBtn)
 }
 // even handlers
 function handleGenerateRandomColorBtn(){
@@ -149,7 +145,12 @@ function handlePresetColorParent(event){
     }
 }
 
-
+function handleSaveToCustomBtn(){
+    const customColorParent = document.getElementById('custom-colors')
+    customColors.push(`#${document.getElementById('input-hex').value}`)
+    removeChildren(customColorParent)
+    displayColorBoxes(customColorParent, customColors)
+}
 
 
 // DOM function
@@ -236,6 +237,19 @@ function displayColorBoxes(parent, colors){
         parent.appendChild(colorBox)
     })
 }
+
+/**
+ * remove all children from parent
+ * @param {object} parent 
+ */
+function removeChildren(parent){
+ let child = parent.lastElementChild
+ while(child){
+    parent.removeChild(child)
+    child = parent.lastElementChild
+ }
+}
+
 
 // Utils
 
