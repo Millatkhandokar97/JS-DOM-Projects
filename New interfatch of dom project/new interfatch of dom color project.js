@@ -75,7 +75,7 @@ function main() {
     colorSliderBlue.addEventListener('change', handleColorSliders(colorSliderRed, colorSliderGreen, colorSliderBlue))
     copyToClipboard.addEventListener('click', handleCopyToClipboard)
     presetColorParent.addEventListener('click', handlePresetColorParent)
-    saveToCustom.addEventListener('click', handleSaveToCustomBtn)
+    saveToCustom.addEventListener('click', handleSaveToCustomBtn(customColorParent, colorModeHexInp))
 }
 // even handlers
 function handleGenerateRandomColorBtn(){
@@ -146,11 +146,11 @@ function handlePresetColorParent(event){
     }
 }
 
-function handleSaveToCustomBtn(){
-    return function(customColorParent, inputHex){
-    customColors.push(`#${input-hex.value}`)
-    removeChildren(customColorParent)
-    displayColorBoxes(customColorParent, customColors)
+function handleSaveToCustomBtn(customColorsParent, inputHex){
+    return function(){
+    customColors.push(`#${inputHex.value}`)
+    removeChildren(customColorsParent)
+    displayColorBoxes(customColorsParent, customColors)
     }
 }
 
