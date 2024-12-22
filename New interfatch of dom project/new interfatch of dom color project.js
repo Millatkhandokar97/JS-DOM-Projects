@@ -39,7 +39,7 @@ const defaultPresetColors = [
     '#FCB013',
 
 ]
-const customColors = []
+let customColors = new Array(24)
 const copySound = new Audio('./copy-paste.mp3')
 
 //onload handler
@@ -48,6 +48,12 @@ window.onload = () => {
     updateColorCodeToDom(defaultColor)
     //display preset colors
     displayColorBoxes(document.getElementById('preset-colors'), defaultPresetColors)
+
+    const customColorsString = localStorage.getItem('custom-colors')
+    if(customColorsString){
+        customColors = JSON.parse(customColorsString)
+        displayColorBoxes(document.getElementById('custom-colors'), customColors)
+    }
   };
 
 
@@ -148,7 +154,13 @@ function handlePresetColorParent(event){
 
 function handleSaveToCustomBtn(customColorsParent, inputHex){
     return function(){
-    customColors.push(`#${inputHex.value}`)
+    const color = `#${inputHex.value}`
+    if(customColors.includes(color)) return
+    customColors.unshift(color)
+    if(customColors.length > 24){
+        customColors = customColors.slice(0, 24)
+    }
+    localStorage.setItem('custom-colors', JSON.stringify(customColors))
     removeChildren(customColorsParent)
     displayColorBoxes(customColorsParent, customColors)
     }
@@ -235,8 +247,10 @@ function generateColorBox(color) {
  */
 function displayColorBoxes(parent, colors){
     colors.forEach((color) =>{
+        if(isValidHex(color.slice(1))){
         const colorBox = generateColorBox(color)
         parent.appendChild(colorBox)
+        }
     })
 }
 
