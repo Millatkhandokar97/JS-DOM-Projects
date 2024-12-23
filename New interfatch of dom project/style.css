@@ -229,7 +229,36 @@ label {
         justify-content: flex-start;
         padding: 8px;
 }
+/* color preferences*/
+.background-inage{
+    width: 10%;
+    padding-top: 55%;
+    border-radius: 5px;
+    background-color: #dddeee;
+    margin-top: 10px;
+    background-repeat: no-repeat !important;
+    background-size: 100% 100% !important;
+    background-position: bottom !important;
+}
 
+.background-control{
+    margin-top: 15px;
+    display: flex;
+    gap: 8px;
+}
+
+.file-input{
+    display: none;
+}
+
+.background-control-btn{
+    padding: 8px 15px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+/* toast message*/
 .toast-message {
     position: fixed;
     z-index: 999;

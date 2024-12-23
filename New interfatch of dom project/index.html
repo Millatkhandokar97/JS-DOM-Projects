@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <title>New interfatch of dom project</title>
     <script src="./new interfatch of dom color project.js"></script>
 </head>
+
 <body>
     <div class="container">
         <div class="section">
@@ -22,9 +24,9 @@
             <div class="button-section">
                 <h3 class="section-title">Change & Copy Color</h3>
                 <div class="button-container">
-                    
-                <button class="save-button" id="save-to-custom">Save</button>
-                <button class="copy-button" id="copy-to-clipboard">Copy</button>
+
+                    <button class="save-button" id="save-to-custom">Save</button>
+                    <button class="copy-button" id="copy-to-clipboard">Copy</button>
                 </div>
             </div>
             <div class="divider"></div>
@@ -32,25 +34,25 @@
                 <p class="lead">Select Copy Mode</p>
                 <div class="mode-radio-group">
                     <div class="mode-input-group">
-                        <input type="radio" value="hex" name="color-mode" checked id="color-mode-hex"/>
+                        <input type="radio" value="hex" name="color-mode" checked id="color-mode-hex" />
                         <label for="color-mode-hex">Hex</label>
                     </div>
                     <div class="mode-input-group">
                         <input type="radio" value="rgb" name="color-mode" id="color-mode-rgb">
-                        <label for="color-mode-rgb">Rgb</label>  
+                        <label for="color-mode-rgb">Rgb</label>
                     </div>
                 </div>
-                
+
             </div>
             <div class="selected-color-code">
                 <div class="hex-input-group">
                     <label for="input-hex" class="lead">Hex</label>
-                    <input class="output" type="text"  placeholder="dddeee" id="input-hex">
-                    <div class="hex-icon">#</div>  
+                    <input class="output" type="text" placeholder="dddeee" id="input-hex">
+                    <div class="hex-icon">#</div>
                 </div>
                 <div class="input-rgb">
                     <label for="input-rgb" class="lead">Rgb</label>
-                    <input class="output2" type="text" disabled placeholder="rgb(221, 222, 238)" id="input-rgb">    
+                    <input class="output2" type="text" disabled placeholder="rgb(221, 222, 238)" id="input-rgb">
                 </div>
             </div>
             <div class="color-sliders">
@@ -61,21 +63,24 @@
                             <p>Red</p>
                             <p id="color-slider-red-label">221</p>
                         </div>
-                        <input class="color-slider-red" type="range" min="0" max="255" value="221" name="red" id="color-slider-red">
+                        <input class="color-slider-red" type="range" min="0" max="255" value="221" name="red"
+                            id="color-slider-red">
                     </div>
                     <div class="slider-label-group">
                         <div class="slider-text">
                             <p>Green</p>
                             <p id="color-slider-green-label">222</p>
                         </div>
-                        <input class="color-slider-green" type="range" min="0" max="255" value="222" name="green" id="color-slider-green">
+                        <input class="color-slider-green" type="range" min="0" max="255" value="222" name="green"
+                            id="color-slider-green">
                     </div>
                     <div class="slider-label-group">
                         <div class="slider-text">
                             <p>Blue</p>
                             <p id="color-slider-blue-label">238</p>
                         </div>
-                        <input class="color-slider-blue" type="range" min="0" max="255" value="238" name="blue" id="color-slider-blue">
+                        <input class="color-slider-blue" type="range" min="0" max="255" value="238" name="blue"
+                            id="color-slider-blue">
                     </div>
                 </div>
             </div>
@@ -94,7 +99,28 @@
             <div class="diver"></div>
             <div class="custom-colors" id="custom-colors"></div>
         </section>
+
+        <section>
+            <div class="section-header">
+                <h3 class="section-title">Background Preferences</h3>
+            </div>
+
+            <div class="divider"></div>
+            <div class="display-preferences">
+                <div class="background-preferences">
+                    <div class="background-left-panel">
+                        <p>Background Preview</p>
+                        <div class="background-inage" id="bg-preview"></div>
+                        <div class="background-control">
+                            <input type="file" class="file-input" id="bg-file-input">
+                            <button class="background-control-btn" id="bg-file-input-btn">Upload</button>
+                        </div>
+                    </div>
+                    <div class="background-right-panel"></div>
+                </div>
+            </div>
+        </section>
     </div>
-    
 </body>
+
 </html>
