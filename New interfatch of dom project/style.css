@@ -230,9 +230,21 @@ label {
         padding: 8px;
 }
 /* color preferences*/
+.background-preferences{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.background-left-panel{
+
+    width: 100%;
+}
+
+
 .background-inage{
-    width: 10%;
-    padding-top: 55%;
+    width: 100%;
+    padding-top: 50%;
     border-radius: 5px;
     background-color: #dddeee;
     margin-top: 10px;
@@ -247,9 +259,9 @@ label {
     gap: 8px;
 }
 
-.file-input{
+/* .file-input{
     display: none;
-}
+} */
 
 .background-control-btn{
     padding: 8px 15px;
