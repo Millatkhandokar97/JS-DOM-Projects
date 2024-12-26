@@ -70,7 +70,8 @@ function main() {
     const saveToCustom = document.getElementById('save-to-custom')
     const presetColorParent = document.getElementById('preset-colors')
     const customColorParent = document.getElementById('custom-colors')
-
+    const bgFileInput = document.getElementById('bg-file-input')
+    const bgFileInputBtn = document.getElementById('bg-file-input-btn')
     // event listeners
     generateRandomColorBtn.addEventListener('click', handleGenerateRandomColorBtn)
 
