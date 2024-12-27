@@ -70,9 +70,11 @@ function main() {
     const saveToCustom = document.getElementById('save-to-custom')
     const presetColorParent = document.getElementById('preset-colors')
     const customColorParent = document.getElementById('custom-colors')
+    const bgPreview = document.getElementById('bg-preview')
     const bgFileInput = document.getElementById('bg-file-input')
     const bgFileInputBtn = document.getElementById('bg-file-input-btn')
-    const bgPreview = document.getElementById('bg-preview')
+    const bgFileDeleteBtn = document.getElementById('bg-file-delete-btn')
+    bgFileDeleteBtn.style.display = 'none'
 
     // event listeners
     generateRandomColorBtn.addEventListener('click', handleGenerateRandomColorBtn)
@@ -93,6 +95,16 @@ function main() {
         const imgUrl = URL.createObjectURL(file)
         bgPreview.style.background = `url(${imgUrl})`
         document.body.style.background = `url(${imgUrl})`
+        bgFileDeleteBtn.style.display = 'inline'
+    })
+    bgFileDeleteBtn.addEventListener('click', function(){
+        
+        bgPreview.style.background = 'none'
+        bgPreview.style.backgroundColor = '#dddeee'
+        document.body.style.background = 'none'
+        document.body.style.backgroundColor = '#dddeee'
+        bgFileDeleteBtn.style.display = 'none'
+        bgFileInput.value = null
     })
 }
 // even handlers
