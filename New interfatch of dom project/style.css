@@ -259,9 +259,18 @@ label {
     gap: 8px;
 }
 
-/* .file-input{
+.background-right-panel{
+    padding: 15px;
+    width: 10%;
+}
+
+/* .bg-controller{
     display: none;
 } */
+
+.file-input{
+    display: none;
+} 
 
 .background-control-btn{
     padding: 8px 15px;

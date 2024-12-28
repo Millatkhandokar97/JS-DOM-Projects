@@ -75,6 +75,8 @@ function main() {
     const bgFileInputBtn = document.getElementById('bg-file-input-btn')
     const bgFileDeleteBtn = document.getElementById('bg-file-delete-btn')
     bgFileDeleteBtn.style.display = 'none'
+    const bgControllers = document.getElementById('bg-controllers')
+    bgControllers.style.background = 'none'
 
     // event listeners
     generateRandomColorBtn.addEventListener('click', handleGenerateRandomColorBtn)
