@@ -76,7 +76,7 @@ function main() {
     const bgFileDeleteBtn = document.getElementById('bg-file-delete-btn')
     bgFileDeleteBtn.style.display = 'none'
     const bgControllers = document.getElementById('bg-controllers')
-    bgControllers.style.background = 'none'
+    bgControllers.style.display = 'none'
 
     // event listeners
     generateRandomColorBtn.addEventListener('click', handleGenerateRandomColorBtn)
@@ -98,16 +98,23 @@ function main() {
         bgPreview.style.background = `url(${imgUrl})`
         document.body.style.background = `url(${imgUrl})`
         bgFileDeleteBtn.style.display = 'inline'
+        bgControllers.style.display = 'block'
     })
+
     bgFileDeleteBtn.addEventListener('click', function(){
-        
         bgPreview.style.background = 'none'
         bgPreview.style.backgroundColor = '#dddeee'
         document.body.style.background = 'none'
         document.body.style.backgroundColor = '#dddeee'
         bgFileDeleteBtn.style.display = 'none'
+        bgControllers.style.display = 'none'
         bgFileInput.value = null
     })
+
+    document.getElementById('bg-size').addEventListener('change', changeBackgroundPreferences)
+    document.getElementById('bg-repeat').addEventListener('change', changeBackgroundPreferences)
+    document.getElementById('bg-position').addEventListener('change', changeBackgroundPreferences)
+    document.getElementById('bg-attachment').addEventListener('change', changeBackgroundPreferences)
 }
 // even handlers
 function handleGenerateRandomColorBtn(){
@@ -290,6 +297,13 @@ function removeChildren(parent){
     parent.removeChild(child)
     child = parent.lastElementChild
  }
+}
+
+function changeBackgroundPreferences () {
+    document.body.style.backgroundSize = document.getElementById('bg-size').value
+    document.body.style.backgroundRepeat = document.getElementById('bg-repeat').value
+    document.body.style.backgroundPosition = document.getElementById('bg-position').value
+    document.body.style.backgroundAttachment = document.getElementById('bg-attachment').value
 }
 
 

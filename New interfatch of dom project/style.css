@@ -261,12 +261,16 @@ label {
 
 .background-right-panel{
     padding: 15px;
-    width: 10%;
+    width: 100%;
 }
 
-/* .bg-controller{
+.select-group{
+    margin-bottom: 15px;
+}
+/* .bg-controllers{
     display: none;
 } */
+
 
 .file-input{
     display: none;
