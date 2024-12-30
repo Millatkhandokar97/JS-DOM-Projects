@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./app.js"></script>
     <title>User Input From A Form</title>
 </head>
 <body>
     <div class="container">
         <div class="header-section">
-            <h2></h2>
+            <h2>Fill The Form Below</h2>
             <div class="button-section">
                 <button class="reset-btn" id="reset-btn">Reset</button>
                 <button class="submit-btn" id="submit-btn">Submit</button>
@@ -19,7 +21,7 @@
             <label class="lead" for="name-inp">What is Your Name ?</label>
             <input type="text" class="name-inp" id="name-inp">
         </div>
-        <p class="result-body"></p>
+        <p class="result-display" id="result-body">Hello <strong><samp id="name-output"></samp></strong>, Welcome to our Application. </p>
     </div>
     
 </body>
