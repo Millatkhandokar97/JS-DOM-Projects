@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./app.js"></script>
+    <title>User Input From A Form</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header-section">
+            <h2>Fill The Form Below</h2>
+            <p>* Negative values are not accepted</p>
+        </div>
+        <div class="divider"></div>
+        <div class="result-group">
+            <div class="result">
+                <h1 class="display-text" id="output">00</h1>
+            </div>
+        </div>
+        <div class="input-group">
+            <input type="number" class="text-inp" id="increment-inp" value="1" min="1" max="100">
+            <div class="button-group">
+                <button class="increment-btn" id="increment-btn">Increment</button>
+                <button class="decrement-btn" id="decrement-btn">Decrement</button>
+            </div>
+            <input type="number" class="text-inp" id="decrement-inp" value="1" min="1" max="100">
+        </div>
+    </div>
+
+</body>
+
+</html>
