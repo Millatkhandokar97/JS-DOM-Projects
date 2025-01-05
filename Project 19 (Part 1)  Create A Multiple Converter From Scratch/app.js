@@ -62,7 +62,7 @@ const converter = {
 function main(){
    const categorySelect = document.getElementById('category-select')
    const leftSelect = document.getElementById('left-select')
-   const righrSelect = document.getElementById('right-select')
+   const rightSelect = document.getElementById('right-select')
 
    const converterKeys = Object.keys(converter).sort()
    removeAllChild(categorySelect)
@@ -70,13 +70,44 @@ function main(){
     addOption(categorySelect,{value: item, text: converter[item].name})
    })
 
+   categorySelect.addEventListener('change', function(){
+    const converterName = categorySelect.value;
+   const units = converter[converterName].units
    // handle left select
-   const converterName = categorySelect.value
    removeAllChild(leftSelect)
+   const leftOption = Object.keys(units)
+   leftOption.forEach(item => {
+    addOption(leftSelect, {value: item, text: units[item]})
+   })
 
    // handle right select
-   removeAllChild(righrSelect)
-}
+   removeAllChild(rightSelect)
+   const rightOption = Object.keys(units)
+   rightOption.forEach(item => {
+    addOption(rightSelect, {value: item, text: units[item]})
+   })
+   rightSelect.getElementsByTagName('option')[1].selected = 'selected'
+
+   })
+
+   const converterName = categorySelect.value;
+   const units = converter[converterName].units
+   // handle left select
+   removeAllChild(leftSelect)
+   const leftOption = Object.keys(units)
+   leftOption.forEach(item => {
+    addOption(leftSelect, {value: item, text: units[item]})
+   })
+
+   // handle right select
+   removeAllChild(rightSelect)
+   const rightOption = Object.keys(units)
+   rightOption.forEach(item => {
+    addOption(rightSelect, {value: item, text: units[item]})
+   })
+   rightSelect.getElementsByTagName('option')[1].selected = 'selected'
+
+}   
 
 function addOption(parent, option){
     const opt = document.createElement('option')
