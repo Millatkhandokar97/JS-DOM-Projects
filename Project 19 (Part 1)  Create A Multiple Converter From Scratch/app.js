@@ -70,9 +70,13 @@ function main(){
     addOption(categorySelect,{value: item, text: converter[item].name})
    })
 
+   //default category units
+   handleCategoryChange()
+
    categorySelect.addEventListener('change', function(){
     const converterName = categorySelect.value;
-   const units = converter[converterName].units
+    const units = converter[converterName].units
+
    // handle left select
    removeAllChild(leftSelect)
    const leftOption = Object.keys(units)
@@ -121,4 +125,24 @@ function removeAllChild(parent){
     while(parent.firstChild){
         parent.firstChild.remove()
     }
+}
+
+function handleCategoryChange(categorySelect, leftSelect, rightSelect){
+    const converterName = categorySelect.value;
+    const units = converter[converterName].units
+    const option = Object.keys(units)
+
+
+    removeAllChild(leftSelect)
+    option.forEach(item => {
+     addOption(leftSelect, {value: item, text: units[item]})
+    })
+
+    option.forEach(item => {
+     addOption(rightSelect, {value: item, text: units[item]})
+    })
+
+    // change default option of right select
+    rightSelect.getElementsByTagName('option')[1].selected = 'selected'
+
 }
