@@ -59,6 +59,9 @@ const converter = {
 
 }
 
+let lastLeftSelectValue = ''
+let lastRightSelectValue = ''
+
 function main() {
     const categorySelect = document.getElementById('category-select')
     const leftSelect = document.getElementById('left-select')
@@ -75,6 +78,34 @@ function main() {
 
     categorySelect.addEventListener('change', function () {
         updateCategoryChange(categorySelect, leftSelect, rightSelect)
+    })
+
+    leftSelect.addEventListener('change', function(event){
+        if(event.target.value = rightSelect.value){
+            const options = rightSelect.getElementsByTagName('option')
+            for(let i = 0; i < options.length; i++){
+                if(lastLeftSelectValue === options[i].value){
+                    options[i].selected = 'selected'
+                    lastRightSelectValue = options[i].value
+                    break;
+                }
+            }
+        }
+        lastLeftSelectValue = event.target.value
+    })
+
+    rightSelect.addEventListener('change', function(event){
+        if(event.target.value = leftSelect.value){
+            const options = leftSelect.getElementsByTagName('option')
+            for(let i = 0; i < options.length; i++){
+                if(lastRightSelectValue === options[i].value){
+                    options[i].selected = 'selected'
+                    lastLeftSelectValue = options[i].value
+                    break;
+                }
+            }
+        }
+        lastRightSelectValue = event.target.value
     })
 }
 
@@ -97,17 +128,20 @@ function updateCategoryChange(categorySelect, leftSelect, rightSelect) {
     const units = converter[converterName].units
     const option = Object.keys(units)
 
-
+    // handle left select
     removeAllChild(leftSelect)
-    option.forEach(item => {
+    option.forEach((item) => {
         addOption(leftSelect, { value: item, text: units[item] })
     })
+    lastLeftSelectValue = leftSelect.value
 
-    option.forEach(item => {
-        addOption(rightSelect, { value: item, text: units[item] })
+    // handle right select
+    removeAllChild(rightSelect)
+    option.forEach((item) => {
+        addOption(rightSelect, {value: item, text: units[item] })
     })
 
     // change default option of right select
     rightSelect.getElementsByTagName('option')[1].selected = 'selected'
-
+    lastRightSelectValue = rightSelect.value
 }
