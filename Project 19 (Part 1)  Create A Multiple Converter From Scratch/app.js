@@ -1,7 +1,7 @@
 //Create A Multiple Converter From Scratch
 
 
-window.onload = function(){
+window.onload = function () {
     main()
 }
 
@@ -59,61 +59,26 @@ const converter = {
 
 }
 
-function main(){
-   const categorySelect = document.getElementById('category-select')
-   const leftSelect = document.getElementById('left-select')
-   const rightSelect = document.getElementById('right-select')
+function main() {
+    const categorySelect = document.getElementById('category-select')
+    const leftSelect = document.getElementById('left-select')
+    const rightSelect = document.getElementById('right-select')
 
-   const converterKeys = Object.keys(converter).sort()
-   removeAllChild(categorySelect)
-   converterKeys.forEach((item)=>{
-    addOption(categorySelect,{value: item, text: converter[item].name})
-   })
+    const converterKeys = Object.keys(converter).sort()
+    removeAllChild(categorySelect)
+    converterKeys.forEach((item) => {
+        addOption(categorySelect, { value: item, text: converter[item].name })
+    })
 
-   //default category units
-   handleCategoryChange()
+    //default category units
+    updateCategoryChange(categorySelect, leftSelect, rightSelect)
 
-   categorySelect.addEventListener('change', function(){
-    const converterName = categorySelect.value;
-    const units = converter[converterName].units
+    categorySelect.addEventListener('change', function () {
+        updateCategoryChange(categorySelect, leftSelect, rightSelect)
+    })
+}
 
-   // handle left select
-   removeAllChild(leftSelect)
-   const leftOption = Object.keys(units)
-   leftOption.forEach(item => {
-    addOption(leftSelect, {value: item, text: units[item]})
-   })
-
-   // handle right select
-   removeAllChild(rightSelect)
-   const rightOption = Object.keys(units)
-   rightOption.forEach(item => {
-    addOption(rightSelect, {value: item, text: units[item]})
-   })
-   rightSelect.getElementsByTagName('option')[1].selected = 'selected'
-
-   })
-
-   const converterName = categorySelect.value;
-   const units = converter[converterName].units
-   // handle left select
-   removeAllChild(leftSelect)
-   const leftOption = Object.keys(units)
-   leftOption.forEach(item => {
-    addOption(leftSelect, {value: item, text: units[item]})
-   })
-
-   // handle right select
-   removeAllChild(rightSelect)
-   const rightOption = Object.keys(units)
-   rightOption.forEach(item => {
-    addOption(rightSelect, {value: item, text: units[item]})
-   })
-   rightSelect.getElementsByTagName('option')[1].selected = 'selected'
-
-}   
-
-function addOption(parent, option){
+function addOption(parent, option) {
     const opt = document.createElement('option')
     opt.setAttribute('value', option.value)
     opt.innerText = option.text
@@ -121,13 +86,13 @@ function addOption(parent, option){
     parent.appendChild(opt)
 }
 
-function removeAllChild(parent){
-    while(parent.firstChild){
+function removeAllChild(parent) {
+    while (parent.firstChild) {
         parent.firstChild.remove()
     }
 }
 
-function handleCategoryChange(categorySelect, leftSelect, rightSelect){
+function updateCategoryChange(categorySelect, leftSelect, rightSelect) {
     const converterName = categorySelect.value;
     const units = converter[converterName].units
     const option = Object.keys(units)
@@ -135,11 +100,11 @@ function handleCategoryChange(categorySelect, leftSelect, rightSelect){
 
     removeAllChild(leftSelect)
     option.forEach(item => {
-     addOption(leftSelect, {value: item, text: units[item]})
+        addOption(leftSelect, { value: item, text: units[item] })
     })
 
     option.forEach(item => {
-     addOption(rightSelect, {value: item, text: units[item]})
+        addOption(rightSelect, { value: item, text: units[item] })
     })
 
     // change default option of right select
