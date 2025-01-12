@@ -87,6 +87,7 @@ function main() {
             const options = rightSelect.getElementsByTagName('option')
             for(let i = 0; i < options.length; i++){
                 if(lastLeftSelectValue === options[i].value){
+                    console.log(options[i].value, leftSelect);
                     options[i].selected = 'selected'
                     lastRightSelectValue = options[i].value
                     break;
