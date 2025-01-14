@@ -187,6 +187,9 @@ let lastRightSelectValue = ''
 
 function main() {
     const categorySelect = document.getElementById('category-select')
+    const leftInput = document.getElementById('left-input')
+    const rightInput = document.getElementById('right-input')
+
     const leftSelect = document.getElementById('left-select')
     const rightSelect = document.getElementById('right-select')
 
@@ -196,19 +199,47 @@ function main() {
         addOption(categorySelect, { value: item, text: converter[item].name })
     })
 
-    //default category units
+    // set default category units
     updateCategoryChange(categorySelect, leftSelect, rightSelect)
 
+   
     categorySelect.addEventListener('change', function () {
         updateCategoryChange(categorySelect, leftSelect, rightSelect)
     })
 
+    leftInput.addEventListener('keyup', function(event){
+        if(event.target.value && !isNaN(event.target.value)){
+            const converterName = categorySelect.value
+            const variants = converter[converterName].variants
+            const variantKey = `${leftSelect.value}:${rightSelect.value}`
+            const variant = variants[variantKey]
+            leftInput.value = Number(event.target.value)
+            rightInput.value = variant.calculation(Number(event.target.value))
+        
+        } else{
+            rightInput.value = ''
+        }
+    })
+    
+    rightInput.addEventListener('keyup', function(event){
+        if(event.target.value && !isNaN(event.target.value)){
+            const converterName = categorySelect.value
+            const variants = converter[converterName].variants
+            const variantKey = `${leftSelect.value}:${rightSelect.value}`
+            const variant = variants[variantKey]
+            rightInput.value = Number(event.target.value)
+            leftInput.value = variant.calculation(Number(event.target.value))
+        
+        } else{
+            leftInput.value = ''
+        }
+    })
+
     leftSelect.addEventListener('change', function(event){
-        if(event.target.value = rightSelect.value){
+        if(event.target.value === rightSelect.value){
             const options = rightSelect.getElementsByTagName('option')
             for(let i = 0; i < options.length; i++){
                 if(lastLeftSelectValue === options[i].value){
-                    console.log(options[i].value, leftSelect);
                     options[i].selected = 'selected'
                     lastRightSelectValue = options[i].value
                     break;
@@ -216,10 +247,11 @@ function main() {
             }
         }
         lastLeftSelectValue = event.target.value
+        calculateValue(categorySelect, leftSelect, rightSelect)
     })
 
     rightSelect.addEventListener('change', function(event){
-        if(event.target.value = leftSelect.value){
+        if(event.target.value === leftSelect.value){
             const options = leftSelect.getElementsByTagName('option')
             for(let i = 0; i < options.length; i++){
                 if(lastRightSelectValue === options[i].value){
@@ -230,6 +262,8 @@ function main() {
             }
         }
         lastRightSelectValue = event.target.value
+        calculateValue(categorySelect, leftSelect, rightSelect)
+
     })
 }
 
@@ -268,9 +302,22 @@ function updateCategoryChange(categorySelect, leftSelect, rightSelect) {
     // change default option of right select
     rightSelect.getElementsByTagName('option')[1].selected = 'selected'
     lastRightSelectValue = rightSelect.value
+    calculateValue(categorySelect, leftSelect, rightSelect)
+
 }
 
 
-function calculateValue(){
-    
+function calculateValue(categorySelect, leftSelect, rightSelect){
+    const leftInput = document.getElementById('left-input')
+    const rightInput = document.getElementById('right-input')
+    const formulaText = document.getElementById('formula-text')
+
+    const converterName = categorySelect.value
+    const variants = converter[converterName].variants
+    const variantKey = `${leftSelect.value}:${rightSelect.value}`
+    const variant = variants[variantKey]
+    formulaText.innerText = variant.formula
+    leftInput.value = 1
+    rightInput.value = variant.calculation(1)
+
 }
