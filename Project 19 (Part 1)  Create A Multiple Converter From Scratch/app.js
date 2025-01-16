@@ -171,7 +171,117 @@ const converter = {
             day: 'Day',
             week: 'Week',
             month: 'Month'
-        }
+        },
+        variants:{
+            'second:minute':{
+                formula: 'divide the time value by 60',
+                calculation(n){
+                    return n / 60
+                },
+            },
+            'second:hour':{
+                formula: 'divide the time value by 3600',
+                calculation(n){
+                    return n / 3600
+                },
+            },
+            'second:day':{
+                formula: 'divide the time value by 86400',
+                calculation(n){
+                    return n / 86400
+                },
+            },
+            'second:week':{
+                formula: 'divide the time value by 604800',
+                calculation(n){
+                    return n / 604800
+                },
+            },
+            'second:month':{
+                formula: 'divide the time value by 2628000',
+                calculation(n){
+                    return n / 2628000
+                },
+            },
+            'second:year':{
+                formula: 'divide the time value by 31557600',
+                calculation(n){
+                    return n / 31557600
+                },
+            },
+            'minute:second':{
+                formula: 'mutiply the time value by 60',
+                calculation(n){
+                    return n * 60
+                },
+            },
+            'minute:hour':{
+                formula: 'divide the time value by 3600',
+                calculation(n){
+                    return n / 60
+                },
+            },
+            'minute:day':{
+                formula: 'divide the time value by 1440',
+                calculation(n){
+                    return n / 1440
+                },
+            },
+            'minute:week':{
+                formula: 'divide the time value by 10080',
+                calculation(n){
+                    return n / 10080
+                },
+            },
+            'minute:month':{
+                formula: 'divide the time value by 43800',
+                calculation(n){
+                    return n / 43800
+                },
+            },
+            'minute:year':{
+                formula: 'divide the time value by 525960',
+                calculation(n){
+                    return n / 525960
+                },
+            },
+            'day:second':{
+                formula: 'mutiply the time value by 86400',
+                calculation(n){
+                    return n * 86400
+                },
+            },
+            'day:minute':{
+                formula: 'mutiply the time value by 1440',
+                calculation(n){
+                    return n * 1440
+                },
+            },
+            'day:hour':{
+                formula: 'mutiply the time value by 24',
+                calculation(n){
+                    return n * 24
+                },
+            },
+            'day:week':{
+                formula: 'divide the time value by 7',
+                calculation(n){
+                    return n / 7
+                },
+            },
+            'day:month':{
+                formula: 'divide the time value by 30.416666667',
+                calculation(n){
+                    return n / 30.416666667
+                },
+            },
+            'day:year':{
+                formula: 'divide the time value by 525960',
+                calculation(n){
+                    return n / 525960
+                },
+            },
+        },
     },
     dataTransferRate: {
         name: 'Data Transfer Rate'
