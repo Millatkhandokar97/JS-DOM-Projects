@@ -209,6 +209,7 @@ const converter = {
                     return n / 31557600
                 },
             },
+
             'minute:second':{
                 formula: 'mutiply the time value by 60',
                 calculation(n){
@@ -245,6 +246,7 @@ const converter = {
                     return n / 525960
                 },
             },
+
             'day:second':{
                 formula: 'mutiply the time value by 86400',
                 calculation(n){
@@ -276,9 +278,46 @@ const converter = {
                 },
             },
             'day:year':{
-                formula: 'divide the time value by 525960',
+                formula: 'divide the time value by 365',
                 calculation(n){
-                    return n / 525960
+                    return n / 365
+                },
+            },
+            
+            'week:second':{
+                formula: 'mutiply the time value by 604800',
+                calculation(n){
+                    return n * 604800
+                },
+            },
+            'day:minute':{
+                formula: 'mutiply the time value by 1440',
+                calculation(n){
+                    return n * 1440
+                },
+            },
+            'week:hour':{
+                formula: 'mutiply the time value by 24',
+                calculation(n){
+                    return n * 24
+                },
+            },
+            'week:week':{
+                formula: 'divide the time value by 7',
+                calculation(n){
+                    return n / 10080
+                },
+            },
+            'day:month':{
+                formula: 'divide the time value by 30.416666667',
+                calculation(n){
+                    return n / 30.416666667
+                },
+            },
+            'day:year':{
+                formula: 'divide the time value by 365',
+                calculation(n){
+                    return n / 365
                 },
             },
         },
