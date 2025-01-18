@@ -247,6 +247,43 @@ const converter = {
                 },
             },
 
+            'hour:second':{
+                formula: 'mutiply the time value by 60',
+                calculation(n){
+                    return n * 60
+                },
+            },
+            'hour:minute':{
+                formula: 'divide the time value by 3600',
+                calculation(n){
+                    return n / 60
+                },
+            },
+            'hour:day':{
+                formula: 'divide the time value by 1440',
+                calculation(n){
+                    return n / 1440
+                },
+            },
+            'hour:week':{
+                formula: 'divide the time value by 10080',
+                calculation(n){
+                    return n / 10080
+                },
+            },
+            'hour:month':{
+                formula: 'divide the time value by 43800',
+                calculation(n){
+                    return n / 43800
+                },
+            },
+            'hour:year':{
+                formula: 'divide the time value by 525960',
+                calculation(n){
+                    return n / 525960
+                },
+            },
+
             'day:second':{
                 formula: 'mutiply the time value by 86400',
                 calculation(n){
