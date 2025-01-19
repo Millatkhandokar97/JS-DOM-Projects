@@ -248,21 +248,21 @@ const converter = {
             },
 
             'hour:second':{
-                formula: 'mutiply the time value by 60',
+                formula: 'mutiply the time value by 3600',
+                calculation(n){
+                    return n * 3600
+                },
+            },
+            'hour:minute':{
+                formula: 'mutiply the time value by 3600',
                 calculation(n){
                     return n * 60
                 },
             },
-            'hour:minute':{
-                formula: 'divide the time value by 3600',
-                calculation(n){
-                    return n / 60
-                },
-            },
             'hour:day':{
-                formula: 'divide the time value by 1440',
+                formula: 'divide the time value by 24',
                 calculation(n){
-                    return n / 1440
+                    return n * 24
                 },
             },
             'hour:week':{
@@ -507,3 +507,5 @@ function calculateValue(categorySelect, leftSelect, rightSelect){
     rightInput.value = variant.calculation(1)
 
 }
+
+// আল্লা-হুম্মা ইবি আস্‌তাখীরুকা বিইলমিকা অ আস্‌তাক্‌দিরুকা বি কুদরাতিকা অ আসআলুকা মিন ফায্বলিকাল আযীম, ফাইন্নাকা তাক্‌দিরু অলা আক্‌দিরু অতা’লামু অলা আ’লামু অ আন্তা আল্লা-মুল গুয়ুব। আল্লা-হুম্মা ইন কুন্তা তালামু আন্না হা-যাল আমরা ( ) খাইরুল লি লি দীনি অ মাআশি অ আকিবাতি আমরি অ আ-জিলিহি অ আ-জিলিহ, ফাক্‌দুরহু লি, অ য়্যাসসিরহু লি, সুম্মা বা-রিক লি ফিহ। অ ইন কুন্তা তালামু আন্না হা-যাল আমরা শাররুল লি ফি দীনি অ মাআশি অ আ’-কিবাতি আমরি অ আ’-জিলিহি অ আ-জিলিহ, ফাস্বরিফহু আন্নি অস্বরিফনি আনহু, অক্বদুর লিয়াল খাইরা হাইসু কা-না সুম্মা রায্বযিনি বিহ। 
